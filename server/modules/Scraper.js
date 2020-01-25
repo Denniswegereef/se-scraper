@@ -18,7 +18,7 @@ module.exports = class Scraper {
         const scrapedPagesPromises = await this._building.floors.map(floor => this._scrapePage(floor));
         const scrapedPages = await Promise.all(scrapedPagesPromises);
 
-        const cleanedScrapedPages = scrapedPages.map(floorData => cleanFloorData(floorData.data))
+        const cleanedScrapedPages = scrapedPages.map((floorData, i) => cleanFloorData(floorData.data, this._building.floors[i]));
 
         console.log(cleanedScrapedPages);
     }

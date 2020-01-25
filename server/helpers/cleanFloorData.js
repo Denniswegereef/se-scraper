@@ -2,13 +2,13 @@ const cheerio = require('cheerio');
 
 const CONSTANTS = require('../data/constants');
 
-module.exports = cleanFloorData = floorData => {
+module.exports = cleanFloorData = (floorData, floor) => {
     const $ = cheerio.load(floorData);
-    // console.log($('#floorplan_polygon_container').html());
-    const floorPlan = $(`${CONSTANTS.HANDLES.CONTAINER} .${CONSTANTS.CLASS_RENTED}`);
 
-    console.log('Verhuurde kamers: ' + floorPlan.length);
     return {
-
+        floor: floor.name,
+        avaliable: $(`${CONSTANTS.HANDLES.CONTAINER} .${CONSTANTS.CLASS_AVALIABLE}`).length,
+        reserved: $(`${CONSTANTS.HANDLES.CONTAINER} .${CONSTANTS.CLASS_RESERVED}`).length,
+        rented: $(`${CONSTANTS.HANDLES.CONTAINER} .${CONSTANTS.CLASS_RENTED}`).length,
     }
 }

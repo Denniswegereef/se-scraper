@@ -1,0 +1,55 @@
+{
+    "name": "Nautique Living",
+    "id": "nautique-living",
+    "url": "https://www.studentexperience.nl",
+    "floors": [
+        {
+            "name": "First floor",
+            "url": "http://nautiqueliving.studentexperience.nl/plattegrond.php?pagina=2&eerste-verdieping"
+        },
+        {
+            "name": "Second floor",
+            "url": "http://nautiqueliving.studentexperience.nl/plattegrond.php?pagina=2&tweede-verdieping"
+        },
+        {
+            "name": "Third floor",
+            "url": "http://nautiqueliving.studentexperience.nl/plattegrond.php?pagina=2&derde-verdieping"
+        },
+        {
+            "name": "Fourth floor",
+            "url": "http://nautiqueliving.studentexperience.nl/plattegrond.php?pagina=2&vierde-verdieping"
+        },
+        {
+            "name": "Fifth floor",
+            "url": "http://nautiqueliving.studentexperience.nl/plattegrond.php?pagina=2&vijfde-verdieping"
+        },
+        {
+            "name": "Sixth floor",
+            "url": "http://nautiqueliving.studentexperience.nl/plattegrond.php?pagina=2&zesde-verdieping"
+        },
+        {
+            "name": "Seventh floor",
+            "url": "http://nautiqueliving.studentexperience.nl/plattegrond.php?pagina=2&zevende-verdieping"
+        },
+        {
+            "name": "Eighth floor",
+            "url": "http://nautiqueliving.studentexperience.nl/plattegrond.php?pagina=2&achtste-verdieping"
+        },
+        {
+            "name": "Ninth floor",
+            "url": "http://nautiqueliving.studentexperience.nl/plattegrond.php?pagina=2&negende-verdieping"
+        },
+        {
+            "name": "Tenth floor",
+            "url": "http://nautiqueliving.studentexperience.nl/plattegrond.php?pagina=2&tiende-verdieping"
+        },
+        {
+            "name": "Eleventh floor",
+            "url": "http://nautiqueliving.studentexperience.nl/plattegrond.php?pagina=2&elfde-verdieping"
+        },
+        {
+            "name": "Twelfth floor",
+            "url": "http://nautiqueliving.studentexperience.nl/plattegrond.php?pagina=2&twaalfde-verdieping"
+        }
+    ]
+}
