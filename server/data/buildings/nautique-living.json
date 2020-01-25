@@ -1,0 +1,11 @@
+{
+    "name": "Nautique Living",
+    "id": "nautique-living",
+    "url": "https://www.studentexperience.nl",
+    "floors": [
+        {
+            "name": "First floor",
+            "url": "http://nautiqueliving.studentexperience.nl/plattegrond.php?pagina=2&eerste-verdieping"
+        }
+    ]
+}

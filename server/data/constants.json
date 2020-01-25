@@ -1,0 +1,8 @@
+{
+    "CLASS_AVALIABLE": "beschikbaar",
+    "CLASS_RESERVED": "option",
+    "CLASS_RENTED": "verhuurd",
+    "HANDLES": {
+        "CONTAINER": "#floorplan_polygon_container"
+    }
+}

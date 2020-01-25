@@ -1,0 +1,5 @@
+{
+    "START_SCRAPE": "Started scraping",
+    "ERROR_CONNECTION": "Could not connect to",
+    "SCRAPE_FLOOR": "Trying to scrape"
+}
