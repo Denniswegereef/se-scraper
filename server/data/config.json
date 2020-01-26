@@ -1,5 +1,7 @@
 {
     "BETWEEN_DAYS": "Mon-Fri",
     "BETWEEN_HOURS": "10-11",
-    "INTERVAL_SECONDS": 30
+    "INTERVAL_SECONDS": 30,
+    "MAIL_SERVICE": "gmail",
+    "MAILER_ACTIVE": false
 }

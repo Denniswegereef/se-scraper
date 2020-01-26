@@ -7,7 +7,7 @@ module.exports = cleanFloorData = (floorData, floor) => {
 
     return {
         floor: floor.name,
-        avaliable: $(`${CONSTANTS.HANDLES.CONTAINER} .${CONSTANTS.CLASS_AVALIABLE}`).length,
+        available: $(`${CONSTANTS.HANDLES.CONTAINER} .${CONSTANTS.CLASS_AVAILABLE}`).length,
         reserved: $(`${CONSTANTS.HANDLES.CONTAINER} .${CONSTANTS.CLASS_RESERVED}`).length,
         rented: $(`${CONSTANTS.HANDLES.CONTAINER} .${CONSTANTS.CLASS_RENTED}`).length,
     }
