@@ -1,7 +1,7 @@
 const axios = require('axios');
 const chalk = require('chalk');
 
-const cleanFloorData = require('../helpers/cleanFloorData');
+const FloorDataCleaner = require('../helpers/FloorDataCleaner');
 
 const LOGS = require('../data/logs.json');
 
@@ -9,7 +9,12 @@ module.exports = class Scraper {
     constructor(building) {
         this._building = building
 
-        this._startScraping();
+        // this._startScraping();
+    }
+
+    async start() {
+        const scrapedData = await this._startScraping();
+        return scrapedData
     }
 
     async _startScraping() {
@@ -18,9 +23,7 @@ module.exports = class Scraper {
         const scrapedPagesPromises = await this._building.floors.map(floor => this._scrapePage(floor));
         const scrapedPages = await Promise.all(scrapedPagesPromises);
 
-        const cleanedScrapedPages = scrapedPages.map((floorData, i) => cleanFloorData(floorData.data, this._building.floors[i]));
-
-        console.log(cleanedScrapedPages);
+        return scrapedPages.map((floorData, i) => FloorDataCleaner.clean(floorData.data, this._building.floors[i]));
     }
 
     async _scrapePage(floor) {

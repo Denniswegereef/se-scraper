@@ -10,7 +10,7 @@ module.exports = createMailTemplate = (data = {}) => {
 
         return `
         <p><bold>${floor.name}</bold></p>
-        <a href="${floor.link}">Go to page for ${floor.name.toLowerCase()}</a>
+        <a href="${floor.url}">Go to page for ${floor.name.toLowerCase()}</a>
         <ul>
         ${floor.available.map(number => {
             return `

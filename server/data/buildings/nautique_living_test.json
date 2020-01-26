@@ -6,6 +6,10 @@
         {
             "name": "First floor",
             "url": "http://nautiqueliving.studentexperience.nl/plattegrond.php?pagina=2&eerste-verdieping"
+        },
+        {
+            "name": "Second floor",
+            "url": "http://nautiqueliving.studentexperience.nl/plattegrond.php?pagina=2&tweede-verdieping"
         }
     ]
 }
