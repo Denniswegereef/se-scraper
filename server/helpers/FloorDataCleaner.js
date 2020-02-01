@@ -22,7 +22,7 @@ class FloorDataCleaner {
     }
 
     _getFloorNumbers(data) {
-        if (!data.length >= 1) return [2];
+        if (!data.length >= 1) return [Math.floor(Math.random() * 2) + 1];
 
         const arr = [];
 

@@ -1,64 +1,80 @@
 require('dotenv').config()
-
 const cron = require('node-cron');
 const chalk = require('chalk');
 
+// Modules
 const ScraperModule = require('./modules/Scraper');
 const MailerModule = require('./modules/Mailer');
 
+// Helpers
 const createTimeStamp = require('./helpers/createTimeStamp');
 const createMailTemplate = require('./helpers/createMailTemplate');
+const combineFloors = require('./helpers/combineFloorsData');
+const compareFloors = require('./helpers/compareFloors');
+
+// Language
+const CONFIG = require('./data/config.json');
+const LOGS = require('./data/logs.json');
 
 // Buildings
 const nautiqueLiving = require('./data/buildings/nautique_living.json');
 const nautiqueLivingTest = require('./data/buildings/nautique_living_test.json');
-const CONFIG = require('./data/config.json');
-const LOGS = require('./data/logs.json');
 
 const scraperNautique = new ScraperModule(nautiqueLivingTest);
-
-scraperNautique.start().then(response => {
-    const testObject = {
-        name: 'Dennis Wegereef',
-        timestamp: createTimeStamp(),
-        buildingName: nautiqueLiving.name,
-        floors: response
-    }
-
-    response.map(floor => {
-        return {}
-    })
-
-
-    console.log(response)
-
-
-
-    console.log(createMailTemplate(testObject));
+const Mailer = new MailerModule({
+    username: process.env.EMAIL_USERNAME,
+    password: process.env.EMAIL_PASSWORD
 });
 
+let oldFloorsResponse = {};
+let newFloorsResponse = {};
 
-// const Mailer = new MailerModule({
-//     username: process.env.EMAIL_USERNAME,
-//     password: process.env.EMAIL_PASSWORD
-// });
+cron.schedule(`*/${CONFIG.INTERVAL_SECONDS} * ${CONFIG.BETWEEN_HOURS} * * ${CONFIG.BETWEEN_DAYS}`, () => {
+    console.log(chalk.magentaBright(createTimeStamp()));
 
-// Mailer.send({
-//     addresses: [process.env.EMAIL_USERNAME],
-//     subject: LOGS.EMAIL_SUBJECT,
-//     html: createMailTemplate(markup)
-// });
+    scraperNautique.start().then(response => {
+        if (!("available" in oldFloorsResponse)) oldFloorsResponse = combineFloors(response);
 
+        newFloorsResponse = combineFloors(response);
 
-// const scrapeCycle = new Scraper(nautiqueLiving);
-// */1 10-12 * * Mon-Fri
+        console.log(`New avaliable rooms: ${newFloorsResponse.available}`)
+        console.log(`Old avaliable rooms: ${oldFloorsResponse.available}`)
 
-// });
+        if (compareFloors(oldFloorsResponse, newFloorsResponse)) {
+            console.log('Available found');
 
-// cron.schedule('*/10 * 16-20 * * Sun', () => {
-//     console.log(chalk.magentaBright(createTimeStamp()));
-// });
+            Mailer.send({
+                addresses: [process.env.EMAIL_USERNAME],
+                subject: LOGS.EMAIL_SUBJECT,
+                html: createMailTemplate(response)
+            });
+        }
 
-// cron.schedule(`*/${INTERVAL_SECONDS} * ${CONFIG.BETWEEN_HOURS} * * ${CONFIG.BETWEEN_DAYS}`, () => {
-//     console.log(chalk.magentaBright(createTimeStamp()));
-// });
+        oldFloorsResponse = newFloorsResponse;
+    });
+});
+
+setInterval(() => {
+    console.log(chalk.magentaBright(createTimeStamp()));
+
+    scraperNautique.start().then(response => {
+        if (!("available" in oldFloorsResponse)) oldFloorsResponse = combineFloors(response);
+
+        newFloorsResponse = combineFloors(response);
+
+        console.log(`New avaliable rooms: ${newFloorsResponse.available}`)
+        console.log(`Old avaliable rooms: ${oldFloorsResponse.available}`)
+
+        if (compareFloors(oldFloorsResponse, newFloorsResponse)) {
+            console.log('Available room found');
+
+            Mailer.send({
+                addresses: [process.env.EMAIL_USERNAME],
+                subject: LOGS.EMAIL_SUBJECT,
+                html: createMailTemplate(response)
+            });
+        }
+
+        oldFloorsResponse = newFloorsResponse;
+    });
+}, 5000);
