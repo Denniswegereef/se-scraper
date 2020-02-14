@@ -3,7 +3,7 @@ module.exports = combineFloors = (response) => {
     const reserved = [];
     const rented = [];
 
-    response.forEach(floor => {
+    response.floors.forEach(floor => {
         available.push(...floor.available);
         reserved.push(...floor.reserved);
         rented.push(...floor.rented);

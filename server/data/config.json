@@ -1,7 +1,9 @@
 {
+    "DEV_TEST": false,
     "BETWEEN_DAYS": "Mon-Fri",
     "BETWEEN_HOURS": "10-11",
     "INTERVAL_SECONDS": 30,
+    "TEST_INTERVAL_SECONDS": 5,
     "MAIL_SERVICE": "gmail",
-    "MAILER_ACTIVE": false
+    "MAILER_ACTIVE": true
 }

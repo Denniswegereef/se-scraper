@@ -2,5 +2,8 @@
     "START_SCRAPE": "Started scraping",
     "ERROR_CONNECTION": "Could not connect to",
     "SCRAPE_FLOOR": "Trying to scrape",
-    "EMAIL_SUBJECT": "New rooms available"
+    "EMAIL_SUBJECT": "New rooms available",
+    "START_FETCHCING": "Starting to fetch",
+    "ROOMS_NOT_FOUND": "No available rooms found",
+    "ROOMS_FOUND": "Available rooms found"
 }

@@ -1,4 +1,7 @@
 module.exports = createMailTemplate = (data = {}) => {
+    // console.log(data)
+    // return 'test'
+
     return `
     <h2>There are new rooms available <bold>${data.name}</bold></h2>
     <p>Time: ${data.timestamp}</p>

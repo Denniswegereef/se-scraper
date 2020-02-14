@@ -2,6 +2,7 @@
     "CLASS_AVAILABLE": "beschikbaar",
     "CLASS_RESERVED": "option",
     "CLASS_RENTED": "verhuurd",
+    "AVAILABLE_KEY": "available",
     "HANDLES": {
         "CONTAINER": "#floorplan_polygon_container"
     }
